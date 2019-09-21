@@ -18,7 +18,8 @@ class CreateArtigosTable extends Migration
             $table->string('titulo');
             $table->string('autores');
             $table->string('resumo');
-            $table->string('estadoRevisao');
+            $table->string('estadoRevisao');           
+            $table->text('artigodoc');
 
             $table->timestamps();
         });

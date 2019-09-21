@@ -24,9 +24,11 @@
                     font-style: italic;">{{$p->areaconcentracao}}</h2></dl>
                   <dl class="list-group-item">
                       <div class="row">
-              <form action="RemoverPergunta" method="post"> 
+            <?php if(auth()->user()->tipo == "administrador"){ ?>     
+
+              <form method="GET" action="/eventos/excluir/{{$p->id}}"> 
                   <input type="text"  hidden="" value="" name="id"> 
-                  <button type="submit" style="margin-right: 10px;" onClick="" id="DeletarUsuario"  value="Deletar Pergunta" class="btn btn-outline-danger btn-sm btn-responsive">
+                  <button href="/eventos/excluir/{{$p->id}}" type="submit" style="margin-right: 10px;" onClick="" id="DeletarUsuario"  value="Deletar Pergunta" class="btn btn-outline-danger btn-sm btn-responsive">
                       <i class="fa fa-trash-o">
                       </i> Excluir Evento
                   </button>
@@ -40,6 +42,7 @@
                 </button>
             </form> 
                       </div>
+                      <?php } ?>
           </dl>
       </ul>
       </div>             

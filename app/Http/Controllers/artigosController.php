@@ -43,9 +43,12 @@ class artigosController extends Controller
 
  public function inserirArtigo(){
     $artigo = new artigo();
+    //$b64Doc = chunk_split(base64_encode(file_get_contents(Request::input('artigodoc'))));
+    //$artigo->artigodoc = $b64Doc;
     $artigo->titulo = Request::input('titulo');
     $artigo->autores = Request::input('autores');
     $artigo->resumo = Request::input('resumo');
+    $artigo->estadoRevisao = false;
     $artigo->save();
     return redirect('/artigos')->withInput();		
 }

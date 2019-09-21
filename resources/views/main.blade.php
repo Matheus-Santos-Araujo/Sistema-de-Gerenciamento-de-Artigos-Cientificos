@@ -440,10 +440,10 @@
                     <a class="nav-link" href="#">Seus Artigos</a>
                   </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Submeter</a>
+                  <a class="nav-link" href="/inserirartigo">Submeter</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Visualizar Eventos</a>
+                    <a class="nav-link" href="/eventos">Visualizar Eventos</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Notificações</a>

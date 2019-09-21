@@ -21,6 +21,9 @@ class EventoController extends Controller
 
     
     public function form(){
+        if(Auth::guest() || auth()->user()->tipo != "administrador"){
+            return redirect('/welcome');
+        }
         return view('eventoform');
      }
 
@@ -31,17 +34,22 @@ class EventoController extends Controller
         $evento->abertura = Request::input('abertura');
         $evento->deadline = Request::input('deadline');
         $evento->areaconcentracao = Request::input('areaconcentracao');
+        $evento->periodoinicio = Request::input('abertura');
+        $evento->periodoiniciofim = Request::input('deadline');
+        $evento->palavraChave = Request::input('palavrachave');
+        $evento->situacao = "ativo";
         $evento->save();
         return redirect('/eventos')->withInput();		
     }
 
-    public function periodo()
-    {
-        //
-    }
+    public function excluir($id){
+		$evento = evento::find($id);
+		$evento->delete();
+		//return redirect('/produtos');		
+		return redirect()->action('EventoController@lista');
+	}
 
-   
-    public function show(evento $evento)
+    public function periodo()
     {
         //
     }

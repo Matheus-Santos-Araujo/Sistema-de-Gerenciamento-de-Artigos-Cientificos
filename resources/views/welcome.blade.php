@@ -32,7 +32,7 @@
         <div class="container">
               <button class="btn btn-outline-dark" style="margin-bottom: 20px;" disabled>Eventos</button>
             <div class="row">
-                <form action="exibirUsuarios" method="get">
+                <form action="/eventos" method="get">
                     <button type="submit" class="btn btn-sq-lg btn-info botao" id="VisualizarEventos" value="Visualizar Eventos"/><i class="fa fa-eye fa-5x"></i></br>Visualizar Eventos</button>
                 </form>
               </br>
@@ -40,7 +40,7 @@
                     <button type="submit" class="btn btn-sq-lg btn-success botao" id="PesquisarEvento" value="PesquisarEvento"/><i class="fa fa-search fa-5x"></i></br>Pesquisar Evento</button>
                 </form>
               </br>
-              <?php if(auth()->user(['tipo']) == "administrador"){ ?>     
+              <?php if(auth()->user()->tipo == "administrador"){ ?>     
               <form action="/inserirevento" method="get">
                     <button type="submit" class="btn btn-sq-lg btn-warning botao" id="InserirEvento" value="Inserir Evento"/><i class="fa fa-plus fa-5x"></i></br>Inserir Evento</button>
                 </form>

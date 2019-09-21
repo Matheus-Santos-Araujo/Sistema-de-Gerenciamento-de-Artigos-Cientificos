@@ -24,7 +24,7 @@ Route::get('/inserirartigo','artigosController@form');
 Route::post('/criarartigo','artigosController@inserirartigo');
 Route::post('/autenticar','Auth\LoginController@authenticate');
 Route::post('/deslogar','Auth\LoginController@logout');
-// Route::post('/registrar','Auth\RegisterController@create');
+Route::get('/eventos/excluir/{id}', 'EventoController@excluir');
 // Route::post('/registrarprof','Auth\RegisterController@createprof');
 Route::get('/inserirevento','EventoController@form');
 Route::post('/criarevento','EventoController@inserirevento');
