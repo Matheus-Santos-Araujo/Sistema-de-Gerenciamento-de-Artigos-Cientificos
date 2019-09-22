@@ -17,6 +17,7 @@ Route::auth();
 Route::get('/','artigosController@welcome');
 
 Route::get('/welcome','artigosController@welcome');
+Route::get('/home','artigosController@welcome');
 
 Route::get('/artigos','artigosController@lista');
 Route::get('/eventos','EventoController@lista');
