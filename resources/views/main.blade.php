@@ -414,7 +414,7 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="assets/sass/style.css">
-<link rel="shortcut icon" href="/favicon.ico">
+<link rel="shortcut icon" href="https://cdn2.iconfinder.com/data/icons/metro-uinvert-dock/256/Journal.png">
 <style>
   body {
     background-color: #6c757d47;

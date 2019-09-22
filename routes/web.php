@@ -20,6 +20,7 @@ Route::get('/welcome','artigosController@welcome');
 
 Route::get('/artigos','artigosController@lista');
 Route::get('/eventos','EventoController@lista');
+Route::get('/eventos/pesquisar','EventoController@pesquisar');
 Route::get('/inserirartigo','artigosController@form');
 Route::post('/criarartigo','artigosController@inserirartigo');
 Route::post('/autenticar','Auth\LoginController@authenticate');

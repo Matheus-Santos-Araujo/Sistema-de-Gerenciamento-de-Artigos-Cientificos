@@ -82,6 +82,7 @@ class RegisterController extends Controller
             $aluno->senha = bcrypt($data['password']);
             $aluno->matricula =  $data['matricula'];
             $aluno->save();
+            return view('auth/login');
          } else {
             $prof = new professor();
             $prof->nome = $data['name'];
@@ -91,6 +92,7 @@ class RegisterController extends Controller
             $prof->areadepesquisa = $data['areadepesquisa'];
             $prof->titulacao = $data['titulacao'];
             $prof->save();
+            return view('auth/login');
          }
         return view('auth/login');
     }

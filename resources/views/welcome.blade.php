@@ -1,5 +1,10 @@
 @extends('main')  
   @section('conteudo')  
+
+  <div class="alert alert-success">
+        <i class="fa fa-smile-o fa-lg"></i><strong> Seja Bem-vindo {{ auth()->user()->name }} você tem 0 notificações</strong> 
+    </div>
+
          <h4 style="margin: 25px;" class="font-weight-light text-secondary text-center">BEM-VINDO AO SISTEMA DE SUBMISSÃO DE ARTIGOS DA SEUNI 2019 </h4>
          <div class="container">   
          <button class="btn btn-outline-dark" style="margin-bottom: 20px;" disabled>Artigos</button>
@@ -36,7 +41,7 @@
                     <button type="submit" class="btn btn-sq-lg btn-info botao" id="VisualizarEventos" value="Visualizar Eventos"/><i class="fa fa-eye fa-5x"></i></br>Visualizar Eventos</button>
                 </form>
               </br>
-                <form action="exibirUsuarios" method="get">
+                <form action="/eventos/pesquisar" method="get">
                     <button type="submit" class="btn btn-sq-lg btn-success botao" id="PesquisarEvento" value="PesquisarEvento"/><i class="fa fa-search fa-5x"></i></br>Pesquisar Evento</button>
                 </form>
               </br>

@@ -19,6 +19,15 @@ class EventoController extends Controller
         return view('listagemeventos')->with('eventos', $eventos);
     }
 
+    public function pesquisar()
+    {
+        if(Auth::guest()){
+            return redirect('/login');
+        }
+        $eventos = evento::all();
+        return view('pesquisarevento')->with('eventos', $eventos);
+    }
+
     
     public function form(){
         if(Auth::guest() || auth()->user()->tipo != "administrador"){
