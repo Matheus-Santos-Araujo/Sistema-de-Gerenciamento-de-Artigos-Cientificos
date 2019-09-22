@@ -64,6 +64,7 @@
 			<form action="/registerprof" method="GET">
 				<button style="margin-top: 2px;" type="submit" class="btn btn-outline-success btn-block">Registrar-se como professor</button>
 			</form>
+			<br>
 		</div>
 		</div>
 				</div>
