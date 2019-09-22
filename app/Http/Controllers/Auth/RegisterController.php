@@ -65,14 +65,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // PARA AUTENTICAÇÃO
-           return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'instituicao' => $data['instituicao'],
-            'tipo' => $data['tipo'],
-            'password' => bcrypt($data['password']),
-        ]);
         // PARA REGISTRAR USUARIOS        
         if($data['tipo'] == "aluno"){
             $aluno = new aluno();
@@ -82,7 +74,6 @@ class RegisterController extends Controller
             $aluno->senha = bcrypt($data['password']);
             $aluno->matricula =  $data['matricula'];
             $aluno->save();
-            return view('auth/login');
          } else {
             $prof = new professor();
             $prof->nome = $data['name'];
@@ -92,8 +83,14 @@ class RegisterController extends Controller
             $prof->areadepesquisa = $data['areadepesquisa'];
             $prof->titulacao = $data['titulacao'];
             $prof->save();
-            return view('auth/login');
          }
-        return view('auth/login');
+         // PARA AUTENTICAÇÃO
+         return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'instituicao' => $data['instituicao'],
+            'tipo' => $data['tipo'],
+            'password' => bcrypt($data['password']),
+        ]);
     }
 }
