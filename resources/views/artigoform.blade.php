@@ -15,11 +15,11 @@
       </div>
       <div class="form-group">
         <label for="inputAddress">Resumo</label>
-        <input type="textarea" rows="5" class="form-control" id="resumo" name="resumo" placeholder="Breve resumo do trabalho">
+        <textarea type="textarea" rows="5" class="form-control" id="resumo" name="resumo" placeholder="Breve resumo do trabalho"></textarea>
       </div>
       <div class="custom-file">
-          <input type="file" class="custom-file-input" name='artigodoc' id="validatedCustomFile">
-          <label class="custom-file-label" for="validatedCustomFile">Escolher arquivo...</label><br>
+          <input type="file" class="custom-file-input" name='artigodoc' id="validatedCustomFile" accept="application/pdf">
+          <label class="custom-file-label" for="validatedCustomFile">Escolher arquivo PDF...</label><br>
         </div><br>
         <button style="margin-top: 20px;" type="submit" class="btn btn-success">Enviar Artigo</button>
       </div>
