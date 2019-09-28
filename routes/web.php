@@ -17,15 +17,17 @@ Route::auth();
 Route::get('/','artigosController@welcome');
 
 Route::get('/welcome','artigosController@welcome');
+Route::get('/home','artigosController@welcome');
 
 Route::get('/artigos','artigosController@lista');
 Route::get('/eventos','EventoController@lista');
-Route::get('/eventos/pesquisar','EventoController@pesquisar');
+Route::any('/eventos/pesquisar','EventoController@search');
 Route::get('/inserirartigo','artigosController@form');
 Route::post('/criarartigo','artigosController@inserirartigo');
 Route::post('/autenticar','Auth\LoginController@authenticate');
 Route::post('/deslogar','Auth\LoginController@logout');
 Route::get('/eventos/excluir/{id}', 'EventoController@excluir');
+Route::get('/artigos/excluir/{id}', 'artigosController@excluir');
 // Route::post('/registrarprof','Auth\RegisterController@createprof');
 Route::get('/inserirevento','EventoController@form');
 Route::post('/criarevento','EventoController@inserirevento');

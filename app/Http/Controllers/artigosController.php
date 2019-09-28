@@ -11,7 +11,6 @@ use App\User;
 
 class artigosController extends Controller
 {
-    
     public function welcome(){
 
         if(Auth::guest()){
@@ -43,13 +42,18 @@ class artigosController extends Controller
 
  public function inserirArtigo(){
     $artigo = new artigo();
-    //$b64Doc = chunk_split(base64_encode(file_get_contents(Request::input('artigodoc'))));
-    //$artigo->artigodoc = $b64Doc;
+    $artigo->artigodoc = base64_encode(file_get_contents(Request::file('artigodoc')));
     $artigo->titulo = Request::input('titulo');
     $artigo->autores = Request::input('autores');
     $artigo->resumo = Request::input('resumo');
     $artigo->estadoRevisao = false;
     $artigo->save();
     return redirect('/artigos')->withInput();		
+}
+
+public function excluir($id){
+    $artigo = artigo::find($id);
+    $artigo->delete();
+    return redirect()->action('artigosController@lista');
 }
 }

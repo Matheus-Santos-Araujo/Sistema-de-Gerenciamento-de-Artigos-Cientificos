@@ -10,7 +10,7 @@
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
+							<strong>Whoops!</strong>  Preencha corretamente os campos.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
 									<li>{{ $error }}</li>
@@ -23,7 +23,7 @@
 						{!! csrf_field() !!}
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Nome</label>
+							<label class="col-md-4 control-label">Nome conforme você será citado como autor</label>
 							<div class="col-md-6">
 								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
 							</div>

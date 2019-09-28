@@ -18,16 +18,6 @@ class EventoController extends Controller
         $eventos = evento::all();
         return view('listagemeventos')->with('eventos', $eventos);
     }
-
-    public function pesquisar()
-    {
-        if(Auth::guest()){
-            return redirect('/login');
-        }
-        $eventos = evento::all();
-        return view('pesquisarevento')->with('eventos', $eventos);
-    }
-
     
     public function form(){
         if(Auth::guest() || auth()->user()->tipo != "administrador"){
@@ -54,30 +44,13 @@ class EventoController extends Controller
     public function excluir($id){
 		$evento = evento::find($id);
 		$evento->delete();
-		//return redirect('/produtos');		
 		return redirect()->action('EventoController@lista');
-	}
-
-    public function periodo()
-    {
-        //
     }
-
     
-    public function edit(evento $evento)
-    {
-        //
-    }
-
-    
-    public function update(Request $request, evento $evento)
-    {
-        //
-    }
-
-    
-    public function destroy(evento $evento)
-    {
-        //
-    }
+    public function search(){
+    $texto = Request::input('nome');
+    $eventos = evento::where('nome', 'like', '%'.$texto.'%')->orWhere('sigla','like','%'.$texto.'%')->orWhere('areaconcentracao','like','%'.$texto.'%')->get();
+    //$eventos = evento::where('nome', 'like', '%'.$texto.'%');
+    return view('listagemeventos')->with('eventos', $eventos);   
+ }
 }
