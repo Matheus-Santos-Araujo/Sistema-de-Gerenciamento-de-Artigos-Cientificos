@@ -85,8 +85,8 @@ public function excluir($id){
 public function aceitar($id){
     $artigo = artigo::find($id);
     $artigo->estadoRevisao = true;
-    $artigo->save();
     $artigo->resultado = "Aprovado";
+    $artigo->save();
     return redirect()->action('artigosController@revisados');
 }
 
