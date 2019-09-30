@@ -8,6 +8,7 @@ use App\artigo;
 use Request;
 use Auth;
 use App\User;
+use App\evento;
 
 class artigosController extends Controller
 {
@@ -22,6 +23,26 @@ class artigosController extends Controller
         return view('welcome')->with('user', $user);
      }
     
+     public function revisados(){
+
+        if(Auth::guest()){
+            return redirect('/login');
+        }
+
+        $artigos = artigo::all();
+        return view('listagemrevisados')->with('artigos', $artigos);
+     }
+
+     public function listagemadm(){
+
+        if(Auth::guest()){
+            return redirect('/login');
+        }
+
+        $artigos = artigo::all();
+        return view('listagemadm')->with('artigos', $artigos);
+     }
+
 
    public function lista(){
 
@@ -37,13 +58,17 @@ class artigosController extends Controller
     if(Auth::guest()){
         return redirect('/login');
     }
-    return view('artigoform');
+
+    $eventos = evento::all();
+
+    return view('artigoform')->with('eventos', $eventos);
  }
 
  public function inserirArtigo(){
     $artigo = new artigo();
     $artigo->artigodoc = base64_encode(file_get_contents(Request::file('artigodoc')));
     $artigo->titulo = Request::input('titulo');
+    $artigo->evento = Request::input('evento');
     $artigo->autores = Request::input('autores');
     $artigo->resumo = Request::input('resumo');
     $artigo->estadoRevisao = false;
@@ -56,4 +81,21 @@ public function excluir($id){
     $artigo->delete();
     return redirect()->action('artigosController@lista');
 }
+
+public function aceitar($id){
+    $artigo = artigo::find($id);
+    $artigo->estadoRevisao = true;
+    $artigo->save();
+    $artigo->resultado = "Aprovado";
+    return redirect()->action('artigosController@revisados');
+}
+
+public function rejeitar($id){
+    $artigo = artigo::find($id);
+    $artigo->estadoRevisao = true;
+    $artigo->resultado = "Rejeitado";
+    $artigo->save();
+    return redirect()->action('artigosController@revisados');
+}
+
 }

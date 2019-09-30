@@ -18,7 +18,7 @@
                 </form>
               </br>
               <?php if(auth()->user()->tipo == "professor"){ ?>     
-              <form action="" method="get">
+              <form action="/artigos/revisados" method="get">
                   <button type="submit" class="btn btn-sq-lg btn-warning botao" id="VerArtigosRevisados" value="Ver Artigos Revisados"/><i class="fa fa-file fa-5x"></i></br>Ver Artigos Revisados</button>
               </form>
             </br>
@@ -28,7 +28,7 @@
             <?php } ?>
                </br>
                <?php if(auth()->user()->tipo == "administrador"){ ?>     
-                <form action="" method="get">
+                <form action="/artigos/revisadosadm" method="get">
                     <button type="submit" class="btn btn-sq-lg btn-success botao" id="IndicarRevisor" value="Indicar Revisor"/><i class="fa fa-pencil fa-5x"></i></br>Indicar Revisor</button>
                 </form>
                 <?php } ?>              
