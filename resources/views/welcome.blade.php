@@ -29,7 +29,7 @@
                </br>
                <?php if(auth()->user()->tipo == "administrador"){ ?>     
                 <form action="/artigos/revisadosadm" method="get">
-                    <button type="submit" class="btn btn-sq-lg btn-success botao" id="IndicarRevisor" value="Indicar Revisor"/><i class="fa fa-pencil fa-5x"></i></br>Indicar Revisor</button>
+                    <button type="submit" class="btn btn-sq-lg btn-success botao" id="IndicarRevisor" value="Indicar Revisor"/><i class="fa fa-pencil fa-5x"></i></br>Ver Artigos/Indicar Revisor</button>
                 </form>
                 <?php } ?>              
             </div>

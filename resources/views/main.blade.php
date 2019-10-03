@@ -448,6 +448,16 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#">Notificações</a>
                   </li>
+                  <?php if(auth()->user()->tipo == "professor"){ ?>  
+                  <li class="nav-item">
+                    <a class="nav-link" href="/cadastroprof">Editar cadastro</a>
+                  </li>
+                  <?php } ?>
+                  <?php if(auth()->user()->tipo == "aluno"){ ?>  
+                    <li class="nav-item">
+                      <a class="nav-link" href="/cadastroaluno">Editar cadastro</a>
+                    </li>
+                    <?php } ?>
               </ul>
               <form class="form-inline my-2 my-lg-0" method="POST" action="/deslogar">
                     	<input type="hidden" name="_token" value="{{csrf_token()}}">

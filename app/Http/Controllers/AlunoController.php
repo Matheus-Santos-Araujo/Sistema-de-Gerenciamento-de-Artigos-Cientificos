@@ -3,42 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\aluno;
-use Illuminate\Http\Request;
+use Request;
 
 class AlunoController extends Controller
 {
-   
-    public function index()
-    {
-        //
+    public function cadastroaluno(){	
+        $user = auth()->user();	
+        $aluno = aluno::where('email', 'like', '%'.$user->email.'%')->get();
+	    return view('editaraluno')->with('aluno', $aluno);   
     }
 
-   
-    public function create()
-    {
-        //
-    }
+    public function editaraluno(){	
+        $user = auth()->user();	
+	    $user->name = Request::input('name');
+        $user->email = Request::input('email');
+        $user->instituicao =Request::input('instituicao');
+        $user->password =  $user->password;
+        $user->tipo =  Request::input('tipo');
+        $user->save();
 
-   
-    public function show(aluno $aluno)
-    {
-        //
-    }
-
-    public function edit(aluno $aluno)
-    {
-        //
-    }
-
-   
-    public function update(Request $request, aluno $aluno)
-    {
-        //
-    }
-
-   
-    public function destroy(aluno $aluno)
-    {
-        //
+        $aluno = aluno::find(Request::input('id'));
+        $aluno->nome = Request::input('name');
+        $aluno->email = Request::input('email');
+        $aluno->senha = $user->password;
+        $aluno->instituicao =Request::input('instituicao');
+        $aluno->matricula =  Request::input('matricula');
+        $aluno->save();
+        return redirect('/welcome');
     }
 }

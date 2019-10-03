@@ -7,7 +7,7 @@
     <div style="margin-top:20px; margin-bottom: 15px;" class="input-group-prepend">
        <form action="/eventos/pesquisar" method="POST" class="display: block!important;">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
-        <input style="display: block!important; margin-left:12px; margin-right:12px;" class="form-control my-0 py-1" name="nome" id="nome" type="text" placeholder="Pesquise por um evento (nome, sigla, área)" aria-label="Search">
+        <input style="display: block!important; margin-left:12px; margin-right:12px;" class="form-control my-0 py-1" name="nome" id="nome" type="text" placeholder="Pesquise por um evento (nome, sigla, palavra chave, área, situação)" aria-label="Search">
         <button style="margin-top: 12px; margin-bottom: 10px;" type="submit" class="btn btn-success"><i class="fa fa-search text-white"></i> Pesquisar</button>
        </form>
        <br>

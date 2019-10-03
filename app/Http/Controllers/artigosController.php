@@ -82,20 +82,12 @@ public function excluir($id){
     return redirect()->action('artigosController@lista');
 }
 
-public function aceitar($id){
-    $artigo = artigo::find($id);
+public function aceitar(){
+    $artigo = artigo::find(Request::input('id'));
     $artigo->estadoRevisao = true;
-    $artigo->resultado = "Aprovado";
+    $artigo->parecer = Request::input('parecer');
+    $artigo->resultado = Request::input('resultado');
     $artigo->save();
     return redirect()->action('artigosController@revisados');
-}
-
-public function rejeitar($id){
-    $artigo = artigo::find($id);
-    $artigo->estadoRevisao = true;
-    $artigo->resultado = "Rejeitado";
-    $artigo->save();
-    return redirect()->action('artigosController@revisados');
-}
-
+ }
 }

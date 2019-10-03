@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
 use App\evento;
+use App\artigo;
 use Request;
 use Auth;
 
@@ -42,15 +43,22 @@ class EventoController extends Controller
     }
 
     public function excluir($id){
-		$evento = evento::find($id);
-		$evento->delete();
+        $evento = evento::find($id);
+        $numerosubmissoes = artigo::where('evento', 'like', '%'.$evento->nome.'%');
+        if($numerosubmissoes === NULL){
+        $evento->delete();
+        }
 		return redirect()->action('EventoController@lista');
     }
     
     public function search(){
     $texto = Request::input('nome');
-    $eventos = evento::where('nome', 'like', '%'.$texto.'%')->orWhere('sigla','like','%'.$texto.'%')->orWhere('areaconcentracao','like','%'.$texto.'%')->get();
+    $eventos = evento::where('nome', 'like', '%'.$texto.'%')->orWhere('sigla','like','%'.$texto.'%')->orWhere('areaconcentracao','like','%'.$texto.'%')->orWhere('situacao','like','%'.$texto.'%')->orWhere('palavraChave','like','%'.$texto.'%')->get();
     //$eventos = evento::where('nome', 'like', '%'.$texto.'%');
     return view('listagemeventos')->with('eventos', $eventos);   
+ }
+
+ public function periodo(){
+
  }
 }
