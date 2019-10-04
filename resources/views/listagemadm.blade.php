@@ -43,6 +43,7 @@
                 @if($p->revisor === NULL)
                 <div class="form-row">
                         <div class="form-group col-md-6">
+                            <input type="text"  hidden="" value="{{$p->evento}}" name="evento"> 
                           <input type="text" class="form-control" id="revisor" name="revisor" placeholder="Email do Revisor">
                           <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do Revisor">
                         </div>

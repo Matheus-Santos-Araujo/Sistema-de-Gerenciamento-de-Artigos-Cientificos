@@ -46,13 +46,7 @@
                         </button>
                     </form>
       
-                    <form action="editarpergunta" method="post"> 
-                        <input type="text"  hidden="" value="" name="id"> 
-                      <button type="submit" id="DeletarUsuario" value="Editar Pergunta" class="btn btn-outline-primary btn-sm btn-responsive">
-                          <i class="fa fa-pencil">
-                          </i> Editar Evento
-                      </button>
-                  </form> 
+                   
                             </div>
           </dl>
       </ul>

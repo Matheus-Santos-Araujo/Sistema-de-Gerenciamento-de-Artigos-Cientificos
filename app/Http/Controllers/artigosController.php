@@ -9,6 +9,7 @@ use Request;
 use Auth;
 use App\User;
 use App\evento;
+use DateTime;
 
 class artigosController extends Controller
 {
@@ -65,6 +66,12 @@ class artigosController extends Controller
  }
 
  public function inserirArtigo(){
+    $ev = evento::where('nome', 'like', '%'.Request::input('evento').'%')->get();
+    //$evento = evento::find($ev->id);
+    $now = new DateTime();
+    $d = date("d-m-Y H:i:s", strtotime($ev[0]->deadline));
+    $date = new DateTime($d);
+    if($date > $now){
     $artigo = new artigo();
     $artigo->artigodoc = base64_encode(file_get_contents(Request::file('artigodoc')));
     $artigo->titulo = Request::input('titulo');
@@ -73,7 +80,8 @@ class artigosController extends Controller
     $artigo->resumo = Request::input('resumo');
     $artigo->estadoRevisao = false;
     $artigo->save();
-    return redirect('/artigos')->withInput();		
+    return redirect('/artigos')->withInput();
+    } else { return redirect('/inserirartigo'); }		
 }
 
 public function excluir($id){

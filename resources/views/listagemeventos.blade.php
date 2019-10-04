@@ -23,12 +23,15 @@
           <dl class="list-group-item"><h3 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 13pt; color: #0d3a0d; font-weight: bold;
             display: inline;">Sigla: </h3> <h2 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 15pt; color:#2d9402;
             font-style: italic;">{{$p->sigla}}</h2></dl>
-          <dl class="list-group-item"><h3 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 13pt; color: #0d3a0d; font-weight: bold;
-            display: inline;">Abertura: </h3> <h2 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 15pt; color:#2d9402;
-            font-style: italic;">{{$p->abertura}}</h2></dl>
-          <dl class="list-group-item"><h3 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 13pt; color: #0d3a0d; font-weight: bold;
-            display: inline;">Deadline: </h3> <h2 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 15pt; color:#2d9402;
-            font-style: italic;">{{$p->deadline}}</h2></dl>
+            <dl class="list-group-item"><h3 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 13pt; color: #0d3a0d; font-weight: bold;
+                display: inline;">Palavras Chave: </h3> <h2 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 15pt; color:#2d9402;
+                font-style: italic;">{{$p->palavraChave}}</h2></dl>
+            <?php $now = new DateTime(); ?>
+            <?php $d = date("d-m-Y H:i:s", strtotime($p->deadline));?>
+            <?php $date = new DateTime($d); ?>
+            <dl class="list-group-item"><h3 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 13pt; color: #0d3a0d; font-weight: bold;
+                display: inline;">Situação: </h3> <h2 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 15pt; color:#2d9402;
+                font-style: italic;">@if($date < $now) Fechado @else Aberto @endif</h2></dl>
                 <dl class="list-group-item"><h3 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 13pt; color: #0d3a0d; font-weight: bold;
                     display: inline;">Área de Concentração: </h3> <h2 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 15pt; color:#2d9402;
                     font-style: italic;">{{$p->areaconcentracao}}</h2></dl>
