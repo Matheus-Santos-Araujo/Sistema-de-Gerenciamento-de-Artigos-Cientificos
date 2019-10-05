@@ -1,3 +1,3 @@
-deadline (fechar evento)
-enviar artigo somente evento fechado
-date("d-m-Y H:i:s", strtotime($p->deadline))
+resultado conferência
+observable notificações
+editar evento, artigo

@@ -25,6 +25,12 @@ Route::get('/cadastroprof','ProfessorController@cadastroprof');
 Route::get('/cadastroaluno','AlunoController@cadastroaluno');
 Route::post('/editarprof','ProfessorController@editarprof');
 Route::post('/editaraluno','AlunoController@editaraluno');
+
+Route::post('/edicaoartigo','artigosController@edicaoartigo');
+Route::post('/edicaoevento','EventoController@edicaoevento');
+Route::post('/editarartigo','artigosController@editarartigo');
+Route::post('/editarevento','EventoController@editarevento');
+
 Route::any('/eventos/pesquisar','EventoController@search');
 Route::get('/inserirartigo','artigosController@form');
 Route::post('/criarartigo','artigosController@inserirartigo');

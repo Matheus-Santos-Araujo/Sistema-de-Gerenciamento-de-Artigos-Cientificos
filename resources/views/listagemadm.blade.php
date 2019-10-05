@@ -1,10 +1,30 @@
 @extends('main')  
   @section('conteudo') 
     <div class="alert alert-success">
-        <i class="fa fa-eye fa-lg"></i><strong> Veja seus artigos</strong> 
+        <i class="fa fa-eye fa-lg"></i><strong> Veja todos os artigos da SEUNI</strong> 
     </div><table id="container">
   <!-- percorre contatos montando as linhas da tabela -->
-  @foreach($artigos as $p)
+  <button class="btn btn-outline-dark" style="margin-bottom: 20px;" disabled>Eventos Fechados</button>
+  @foreach($fechados as $f)
+  <div class="grid">
+    <ul class="container-fluid col-lg-12">
+        <dl class="list-group-item"><h3 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 13pt; color: #0d3a0d; font-weight: bold;
+          display: inline;">Evento: </h3><h2 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 15pt; color:#2d9402;
+          font-style: italic;">{{$f->nome}}</h2></dl>
+        <dl class="list-group-item"><h3 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 13pt; color: #0d3a0d; font-weight: bold;
+          display: inline;">Número de artigos Aceitos: </h3> <h2 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 15pt; color:#2d9402;
+          font-style: italic;">{{$f->periodoinicio}}</h2></dl>
+        <dl class="list-group-item"><h3 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 13pt; color: #0d3a0d; font-weight: bold;
+          display: inline;">Número de artigos Rejeitados: </h3> <h2 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 15pt; color:#2d9402;
+          font-style: italic;">{{$f->periodoiniciofim}}</h2></dl>
+        </ul>
+      </div>  
+ @endforeach
+
+<br>
+  <button class="btn btn-outline-dark" style="margin-bottom: 20px;" disabled>Eventos Abertos</button>
+
+  @foreach($artigosa as $p)
   <div class="grid">
       <ul class="container-fluid col-lg-12">
           <dl class="list-group-item"><h3 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 13pt; color: #0d3a0d; font-weight: bold;

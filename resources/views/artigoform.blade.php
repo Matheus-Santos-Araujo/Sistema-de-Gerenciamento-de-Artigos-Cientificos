@@ -20,8 +20,8 @@
 
       <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Selecione o Evento que deseja Participar</label>
   <select class="custom-select my-1 mr-sm-2" name="evento" id="inlineFormCustomSelectPref" style="margin-bottom: 20px;">
-      @foreach($eventos as $p)
-    <option selected>Escolha...</option>
+    <option selected>Escolha...</option>  
+    @foreach($eventos as $p)
     <option value = "{{$p->nome}}">{{$p->nome}}</option>
     @endforeach
   </select>

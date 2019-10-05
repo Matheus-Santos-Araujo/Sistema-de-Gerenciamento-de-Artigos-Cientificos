@@ -15,7 +15,7 @@
       </div>
       <div class="form-group">
         <label for="inputAddress">Abertura</label>
-        <input type="textarea" rows="5" class="form-control" id="abertura" name="abertura" placeholder="Deadline">
+        <input type="textarea" rows="5" class="form-control" id="abertura" name="abertura" placeholder="Abertura">
       </div>
       <div class="form-group">
             <label for="inputAddress">Deadline</label>

@@ -46,7 +46,14 @@
                         </button>
                     </form>
       
-                   
+                    <form action="/edicaoartigo" method="POST"> 
+                        {!! csrf_field() !!}
+                        <input type="text"  hidden="" value="{{$p->titulo}}" name="titulo"> 
+                      <button type="submit" id="DeletarUsuario" value="Editar Pergunta" class="btn btn-outline-primary btn-sm btn-responsive">
+                          <i class="fa fa-pencil">
+                          </i> Editar Artigo
+                      </button>
+                  </form> 
                             </div>
           </dl>
       </ul>

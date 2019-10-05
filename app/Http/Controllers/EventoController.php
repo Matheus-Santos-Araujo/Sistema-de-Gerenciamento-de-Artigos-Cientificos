@@ -44,8 +44,12 @@ class EventoController extends Controller
 
     public function excluir($id){
         $evento = evento::find($id);
-        $numerosubmissoes = artigo::where('evento', 'like', '%'.$evento->nome.'%');
-        if($numerosubmissoes === NULL){
+        $c = 0;
+        $submissoes = artigo::where('evento', 'like', '%'.$evento->nome.'%')->get();
+        foreach($submissoes as $n){
+            $c = $c + 1;
+    }
+    if($c < 1){
         $evento->delete();
         }
 		return redirect()->action('EventoController@lista');
@@ -58,7 +62,23 @@ class EventoController extends Controller
     return view('listagemeventos')->with('eventos', $eventos);   
  }
 
- public function periodo(){
+ public function edicaoevento(){	
+    $evento = evento::where('nome', 'like', '%'.Request::input('nome').'%')->get();
+    return view('editarevento')->with('evento', $evento);   
+}
 
- }
+public function editarevento(){
+    $evento = evento::find(Request::input('id'));
+    $evento->nome = Request::input('nome');
+    $evento->sigla = Request::input('sigla');
+    $evento->abertura = Request::input('abertura');
+    $evento->deadline = Request::input('deadline');
+    $evento->areaconcentracao = Request::input('areaconcentracao');
+    $evento->periodoinicio = Request::input('abertura');
+    $evento->periodoiniciofim = Request::input('deadline');
+    $evento->palavraChave = Request::input('palavrachave');
+    $evento->save();
+    return redirect('/eventos')->withInput();		
+}
+
 }

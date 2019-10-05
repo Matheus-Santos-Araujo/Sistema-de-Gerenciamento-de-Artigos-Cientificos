@@ -445,9 +445,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/eventos">Visualizar Eventos</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Notificações</a>
-                  </li>
                   <?php if(auth()->user()->tipo == "professor"){ ?>  
                   <li class="nav-item">
                     <a class="nav-link" href="/cadastroprof">Editar cadastro</a>
