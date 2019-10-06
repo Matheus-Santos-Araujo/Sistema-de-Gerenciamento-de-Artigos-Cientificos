@@ -14,8 +14,10 @@ class AdministradorController extends Controller
     {
         $ev = evento::where('nome', 'like', '%'.Request::input('evento').'%')->get();
         //$evento = evento::find($ev->id);
-        $now = new DateTime();
-        $d = date("d-m-Y H:i:s", strtotime($ev[0]->deadline));
+        $n = date("Y-m-d H:i:s");
+        $now = new DateTime($n);
+        $data = str_replace("/", "-", $ev[0]->deadline);
+        $d = date("Y-m-d H:i:s", strtotime($data));
         $date = new DateTime($d);
         if($date < $now){
         $artigo = artigo::find(Request::input('id'));
@@ -26,7 +28,7 @@ class AdministradorController extends Controller
         $artigo->revisor = $revisor;
         $artigo->save();
      }
-        return redirect()->action('artigosController@listagemadm');
     }
+    return redirect()->action('artigosController@listagemadm');
   }
 }

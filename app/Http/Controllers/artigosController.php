@@ -48,8 +48,10 @@ class artigosController extends Controller
         $fechados = artigo::where('evento', 'like', '%'.'nenhum'.'%')->get();
         $artigosa = artigo::where('evento', 'like', '%'.'nenhum'.'%')->get();
         foreach($eventos as $ev){
-            $now = new DateTime();
-            $d = date("d-m-Y H:i:s", strtotime($ev->deadline));
+            $n = date("Y-m-d H:i:s");
+            $now = new DateTime($n);
+            $data = str_replace("/", "-", $ev->deadline);
+            $d = date("d-m-Y H:i:s", strtotime($data));
             $date = new DateTime($d);
             if($date < $now){
                 //$ev->push($fechados);
@@ -99,8 +101,10 @@ class artigosController extends Controller
  public function inserirArtigo(){
     $ev = evento::where('nome', 'like', '%'.Request::input('evento').'%')->get();
     //$evento = evento::find($ev->id);
-    $now = new DateTime();
-    $d = date("d-m-Y H:i:s", strtotime($ev[0]->deadline));
+    $n = date("Y-m-d H:i:s");
+    $now = new DateTime($n);
+    $data = str_replace("/", "-", $ev[0]->deadline);
+    $d = date("Y-m-d H:i:s", strtotime($data));
     $date = new DateTime($d);
     if($date > $now){
     $artigo = new artigo();
@@ -139,8 +143,10 @@ public function aceitar(){
 public function editarartigo(){
     $ev = evento::where('nome', 'like', '%'.Request::input('evento').'%')->get();
     //$evento = evento::find($ev->id);
-    $now = new DateTime();
-    $d = date("d-m-Y H:i:s", strtotime($ev[0]->deadline));
+    $n = date("Y-m-d H:i:s");
+    $now = new DateTime($n);
+    $data = str_replace("/", "-", $ev[0]->deadline);
+    $d = date("Y-m-d H:i:s", strtotime($data));
     $date = new DateTime($d);
     if($date > $now){
     $artigo = artigo::find(Request::input('id'));
