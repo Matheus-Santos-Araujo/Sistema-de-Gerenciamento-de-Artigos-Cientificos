@@ -1,9 +1,16 @@
 @extends('main')  
   @section('conteudo')  
 
-  <div class="alert alert-success">
-        <i class="fa fa-smile-o fa-lg"></i><strong> Seja Bem-vindo {{ auth()->user()->name }} você tem 0 notificações</strong> 
+  <div class="alert alert-success" style="margin: 0px!important;">
+        <i class="fa fa-smile-o fa-lg"></i><strong> Seja Bem-vindo {{ auth()->user()->name }}</strong> 
     </div>
+    @foreach($meus as $m)
+    @if($m->notificacao !== NULL)
+    <div class="alert alert-warning" style="margin: 0px!important;">
+        <i class="fa fa-warning fa-lg"></i><strong> Notificação: {{ $m->notificacao }} Artigo: {{$m->titulo}}</strong> 
+    </div>
+    @endif
+    @endforeach
 
          <h4 style="margin: 25px;" class="font-weight-light text-secondary text-center">BEM-VINDO AO SISTEMA DE SUBMISSÃO DE ARTIGOS DA SEUNI 2019 </h4>
          <div class="container">   

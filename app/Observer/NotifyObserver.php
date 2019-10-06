@@ -6,16 +6,16 @@ use App\artigo;
  
 class NotifyObserver
 {
-       // public function creating(artigo $artigo){
-    //    if($artigo->estadoRevisao == "0"){
-     //       $artigo->notificacao = "Você tem um novo artigo aguardando revisão!";
-        //    } 
-    // }
-    // public function updating(artigo $artigo){
-    //    if($artigo->estadoRevisao == "1"){
-    //     $artigo->notificacao = "Você tem um novo artigo aguardando revisão!";
-    //    } else {
-    //    $artigo->notificacao = "Seu artigo sofreu alterações!";
-      // }
-    // }
+       public function creating(artigo $artigo){
+       if($artigo->estadoRevisao == "0"){
+           $artigo->notificacao = "Você tem um novo artigo aguardando revisão!";
+           } 
+    }
+    public function updating(artigo $artigo){
+       if($artigo->estadoRevisao == "1"){
+        $artigo->notificacao = "Você tem um novo artigo aguardando revisão!";
+       } else {
+       $artigo->notificacao = "Seu artigo sofreu alterações!";
+      }
+    }
 }

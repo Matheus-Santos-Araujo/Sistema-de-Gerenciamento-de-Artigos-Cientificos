@@ -18,10 +18,12 @@ class artigosController extends Controller
         if(Auth::guest()){
             return redirect('/login');
         }
-    
-        $user = Auth::user();
 
-        return view('welcome')->with('user', $user);
+        $user = Auth::user();
+        $artigos = artigo::all();
+        $meus = artigo::where('autores', 'like', '%'.$user->name.'%')->get();
+
+        return view('welcome')->with(['user'=>$user, 'meus'=>$meus]);
      }
     
      public function revisados(){
@@ -147,9 +149,8 @@ public function editarartigo(){
     $artigo->evento = Request::input('evento');
     $artigo->autores = Request::input('autores');
     $artigo->resumo = Request::input('resumo');
-    $artigo->estadoRevisao = false;
     $artigo->save();
-    return redirect('/artigos')->withInput();
+    return redirect('/artigos');
     } else { return redirect('/edicaoartigo'); }		
 }
 

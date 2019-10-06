@@ -26,9 +26,12 @@
             <dl class="list-group-item"><h3 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 13pt; color: #0d3a0d; font-weight: bold;
                 display: inline;">Palavras Chave: </h3> <h2 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 15pt; color:#2d9402;
                 font-style: italic;">{{$p->palavraChave}}</h2></dl>
-            <?php $now = new DateTime(); ?>
-            <?php $d = date("d-m-Y H:i:s", strtotime($p->deadline));?>
+            <?php date_default_timezone_set("America/Fortaleza");                ?>
+            <?php $n = date("Y-m-d H:i:s"); ?>
+            <?php $now = new DateTime($n); ?>
+            <?php $d = date("Y-m-d H:i:s", strtotime($p->deadline));?>
             <?php $date = new DateTime($d); ?>
+
             <dl class="list-group-item"><h3 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 13pt; color: #0d3a0d; font-weight: bold;
                 display: inline;">Situação: </h3> <h2 style="font-family: helvetica; margin-left: auto; margin-right: auto; font-size: 15pt; color:#2d9402;
                 font-style: italic;">@if($date < $now) Fechado @else Aberto @endif</h2></dl>
