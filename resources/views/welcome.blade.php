@@ -20,6 +20,7 @@
          <h4 style="margin: 25px;" class="font-weight-light text-secondary text-center">BEM-VINDO AO SISTEMA DE SUBMISSÃO DE ARTIGOS DA SEUNI 2019 </h4>
          <div class="container">   
          <button class="btn btn-outline-dark" style="margin-bottom: 20px;" disabled>Artigos</button>
+         <?php if(auth()->user()->tipo !== "administrador"){ ?> 
          <div class="row text-center">
                 <form action="/inserirartigo" method="get" >
                     <button type="submit" class="btn btn-sq-lg btn-primary botao" id="SubmeterArtigo" value="Submeter Artigo"/><i class="fa fa-upload fa-5x"></i></br>Submeter Artigo</button>
@@ -29,14 +30,11 @@
                     <button type="submit" class="btn btn-sq-lg btn-info botao" id="Verartigosenviados" value="Ver artigos enviados"/><i class="fa fa-eye fa-5x"></i></br>Ver artigos Enviados</button>
                 </form>
               </br>
+              <?php } ?>
               <?php if(auth()->user()->tipo == "professor"){ ?>     
               <form action="/artigos/revisados" method="get">
                   <button type="submit" class="btn btn-sq-lg btn-warning botao" id="VerArtigosRevisados" value="Ver Artigos Revisados"/><i class="fa fa-file fa-5x"></i></br>Ver Artigos Revisados</button>
               </form>
-            </br>
-            <form action="" method="get">
-                <button type="submit" class="btn btn-sq-lg btn-danger botao" id="IndicarArtigo" value="Indicar Artigo"/><i class="fa fa-external-link fa-5x"></i></br>Indicar Artigo</button>
-            </form>
             <?php } ?>
                </br>
                <?php if(auth()->user()->tipo == "administrador"){ ?>     
