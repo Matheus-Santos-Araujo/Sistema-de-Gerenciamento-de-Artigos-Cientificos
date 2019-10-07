@@ -31,6 +31,8 @@ Route::post('/edicaoevento','EventoController@edicaoevento');
 Route::post('/editarartigo','artigosController@editarartigo');
 Route::post('/editarevento','EventoController@editarevento');
 
+Route::post('/deletarnotificacao','artigosController@deletarnotificacao');
+
 Route::any('/eventos/pesquisar','EventoController@search');
 Route::get('/inserirartigo','artigosController@form');
 Route::post('/criarartigo','artigosController@inserirartigo');

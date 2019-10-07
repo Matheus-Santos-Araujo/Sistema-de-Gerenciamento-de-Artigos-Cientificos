@@ -7,7 +7,12 @@
     @foreach($meus as $m)
     @if($m->notificacao !== NULL)
     <div class="alert alert-warning" style="margin: 0px!important;">
-        <i class="fa fa-warning fa-lg"></i><strong> Notificação: {{ $m->notificacao }} Artigo: {{$m->titulo}}</strong> 
+        <i class="fa fa-warning fa-lg"></i><strong>  Notificação: {{ $m->notificacao }} Artigo: {{$m->titulo}}</strong> 
+        <form style="display: inline;" class="text-right" method="POST" action="/deletarnotificacao">
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
+            <input type="text"  hidden="" value="{{$m->id}}" name="id"> 
+         <button class="btn btn-warning btn-sm pull-right text-right" type="submit"><i class="fa fa-trash-o"></i></button>
+        </form>
     </div>
     @endif
     @endforeach

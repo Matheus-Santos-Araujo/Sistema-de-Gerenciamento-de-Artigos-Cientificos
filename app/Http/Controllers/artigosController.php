@@ -160,4 +160,11 @@ public function editarartigo(){
     } else { return redirect('/edicaoartigo'); }		
 }
 
+public function deletarnotificacao(){	
+    $artigo = artigo::find(Request::input('id'));
+    $artigo->notificacao = "deletando";
+    $artigo->save();
+    return redirect('/welcome');
+}
+
 }
