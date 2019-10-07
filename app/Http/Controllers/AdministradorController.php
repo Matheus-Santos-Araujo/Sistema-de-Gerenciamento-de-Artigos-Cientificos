@@ -26,6 +26,7 @@ class AdministradorController extends Controller
         $numerorevisando = artigo::where('revisor', 'like', '%'.$revisor.'%')->where('estadoRevisao', 'like', '%'.'0'.'%')->get();
         if(strpos($artigo->autores,$nome) === false || count($numerorevisando) < 2){
         $artigo->revisor = $revisor;
+        $artigo->notificacao === "indicou";
         $artigo->save();
      }
     }

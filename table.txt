@@ -1,3 +1,1 @@
-resultado conferência
-observable notificações
-editar evento, artigo
+Email no artigo

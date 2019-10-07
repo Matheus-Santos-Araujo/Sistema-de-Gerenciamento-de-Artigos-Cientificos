@@ -111,7 +111,7 @@ class artigosController extends Controller
     $artigo->artigodoc = base64_encode(file_get_contents(Request::file('artigodoc')));
     $artigo->titulo = Request::input('titulo');
     $artigo->evento = Request::input('evento');
-    $artigo->autores = Request::input('autores');
+    $artigo->autores = Request::input('autores'). " - " .Request::input('email');
     $artigo->resumo = Request::input('resumo');
     $artigo->estadoRevisao = false;
     $artigo->save();

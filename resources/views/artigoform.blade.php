@@ -9,9 +9,13 @@
           <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo">
         </div>
         <div class="form-group col-md-6">
-          <label for="inputPassword4">Autores</label>
-          <input type="text" class="form-control" id="autores" name ="autores" placeholder="Autores">
+          <label for="inputPassword4">Nome dos Autores</label>
+          <input type="text" class="form-control" id="autores" name ="autores" placeholder="Insira o nome dos autores">
         </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">Email dos Autores</label>
+        <textarea type="textarea" rows="3" class="form-control" id="email" name="email" placeholder="Insira o email dos autores"></textarea>
       </div>
       <div class="form-group">
         <label for="inputAddress">Resumo</label>

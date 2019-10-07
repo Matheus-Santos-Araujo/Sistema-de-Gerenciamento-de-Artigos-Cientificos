@@ -16,7 +16,7 @@ class EventoController extends Controller
         if(Auth::guest()){
             return redirect('/login');
         }
-        $eventos = evento::all();
+        $eventos = evento::orderBy('created_at','desc')->take(5)->get();
         return view('listagemeventos')->with('eventos', $eventos);
     }
     
