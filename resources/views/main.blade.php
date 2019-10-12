@@ -439,9 +439,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Seus Artigos</a>
                   </li>
+                  <?php if(auth()->user()->tipo !== "administrador"){ ?>  
                 <li class="nav-item">
                   <a class="nav-link" href="/inserirartigo">Submeter</a>
                 </li>
+                <?php } ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/eventos">Visualizar Eventos</a>
                   </li>

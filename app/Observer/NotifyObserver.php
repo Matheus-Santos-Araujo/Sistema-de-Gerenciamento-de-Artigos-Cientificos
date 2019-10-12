@@ -18,7 +18,7 @@ class NotifyObserver
         $artigo->notificacao = "Seu artigo está em revisão!";
     } else {
         if($artigo->estadoRevisao == "1"){
-            $artigo->notificacao = "Seu artigo foi $artigo->resultado";
+            $artigo->notificacao = "Seu artigo foi $artigo->resultado.";
            } else {
            $artigo->notificacao = "Seu artigo sofreu alterações!";
           }

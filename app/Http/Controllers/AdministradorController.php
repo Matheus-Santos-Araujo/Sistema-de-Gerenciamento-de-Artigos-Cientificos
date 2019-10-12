@@ -19,14 +19,14 @@ class AdministradorController extends Controller
         $data = str_replace("/", "-", $ev[0]->deadline);
         $d = date("Y-m-d H:i:s", strtotime($data));
         $date = new DateTime($d);
-        if($date < $now){
+        if($date > $now){
         $artigo = artigo::find(Request::input('id'));
         $revisor = Request::input('revisor');
         $nome = Request::input('nome');
         $numerorevisando = artigo::where('revisor', 'like', '%'.$revisor.'%')->where('estadoRevisao', 'like', '%'.'0'.'%')->get();
         if(strpos($artigo->autores,$nome) === false || count($numerorevisando) < 2){
         $artigo->revisor = $revisor;
-        $artigo->notificacao === "indicou";
+        $artigo->notificacao = "indicou";
         $artigo->save();
      }
     }

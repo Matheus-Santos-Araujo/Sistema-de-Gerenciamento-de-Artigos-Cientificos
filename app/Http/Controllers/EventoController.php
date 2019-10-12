@@ -7,6 +7,7 @@ use App\evento;
 use App\artigo;
 use Request;
 use Auth;
+use DateTime;
 
 class EventoController extends Controller
 {
@@ -16,8 +17,19 @@ class EventoController extends Controller
         if(Auth::guest()){
             return redirect('/login');
         }
-        $eventos = evento::orderBy('created_at','desc')->take(5)->get();
-        return view('listagemeventos')->with('eventos', $eventos);
+       date_default_timezone_set("America/Fortaleza"); 
+       $n = date("Y-m-d H:i:s");
+       $now = new DateTime($n); 
+       $eventos = evento::orderBy('created_at','desc')->take(5)->get();
+       foreach($eventos as $p){
+        $data = str_replace("/", "-", $p->deadline); 
+        $d = date("Y-m-d H:i:s", strtotime($data));
+        $date = new DateTime($d); 
+        if($date < $now){
+        $p->situacao = "Fechado"; }
+        else {$p->situacao = "Aberto"; }
+       }
+        return view('listagemeventos')->with('eventos',$eventos);
     }
     
     public function form(){

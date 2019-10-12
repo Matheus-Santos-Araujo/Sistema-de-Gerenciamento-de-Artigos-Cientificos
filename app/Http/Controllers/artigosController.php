@@ -41,12 +41,10 @@ class artigosController extends Controller
         if(Auth::guest()){
             return redirect('/login');
         }
-// Quero: uma lista de todos o abertos e fechados separado
-// retorno = evento, nm aceitos e nm rejeitados
-        $eventos = evento::all(); // Deadline date
-        $abertos = artigo::where('evento', 'like', '%'.'nenhum'.'%')->get();
-        $fechados = artigo::where('evento', 'like', '%'.'nenhum'.'%')->get();
-        $artigosa = artigo::where('evento', 'like', '%'.'nenhum'.'%')->get();
+        $eventos = evento::all();
+        $abertos = evento::where('sigla', 'like', '%'.'nenhum'.'%')->get();
+        $fechados = evento::where('sigla', 'like', '%'.'nenhum'.'%')->get();
+        $artigosa = artigo::where('autores', 'like', '%'.'nenhum'.'%')->get();
         foreach($eventos as $ev){
             $n = date("Y-m-d H:i:s");
             $now = new DateTime($n);
@@ -70,10 +68,12 @@ class artigosController extends Controller
         }
     
         foreach($abertos as $a){
-            $artigosa = artigo::where('evento', 'like', '%'.$a->nome.'%')->get();
+            $candidato = artigo::where('evento', 'like', '%'.$a->nome.'%')->get();
+            foreach($candidato as $c){
+                $artigosa->push($c);
+            }
         }
      
-
         return view('listagemadm')->with(['artigosa'=>$artigosa, 'fechados'=>$fechados]);
      }
 
@@ -85,15 +85,44 @@ class artigosController extends Controller
     }
 
     $artigos = artigo::all();
-    return view('listagem')->with('artigos', $artigos);
+    foreach($artigos as $p){
+        date_default_timezone_set("America/Fortaleza"); 
+        $n = date("Y-m-d H:i:s");
+        $now = new DateTime($n); 
+        $ev = evento::where('nome', 'like', '%'.$p->evento.'%')->get();
+        foreach($ev as $e){
+        $data = str_replace("/", "-", $e->deadline);
+        }
+        $d = date("Y-m-d H:i:s", strtotime($data));
+        $date = new DateTime($d); 
+        if($date > $now){
+            $p->notify = 1;
+        }else {
+            $p->notify = 0;
+        }
+    }
+    return view('listagem')->with('artigos',$artigos);
  }
 
  public function form(){
     if(Auth::guest()){
         return redirect('/login');
     }
+    $eventos = evento::where('sigla', 'like', '%'.'nenhum'.'%')->get();
+    date_default_timezone_set("America/Fortaleza"); 
+    $n = date("Y-m-d H:i:s");
+    $now = new DateTime($n); 
 
-    $eventos = evento::all();
+    $events = evento::all();
+
+    foreach($events as $e){
+            $data = str_replace("/", "-", $e->deadline); 
+            $d = date("Y-m-d H:i:s", strtotime($data));
+            $date = new DateTime($d); 
+            if($date > $now){
+                $eventos->push($e);
+        }
+    }
 
     return view('artigoform')->with('eventos', $eventos);
  }

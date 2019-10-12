@@ -35,7 +35,7 @@
               font-style: italic;">{{$p->evento}}</h2></dl>
               
               <iframe src="data:application/pdf;base64,{{$p->artigodoc}}"></iframe>
-
+@if(1 == $p->notify)
           <dl class="list-group-item">
               <div class="row">      
                     <form method="GET" action="/artigos/excluir/{{$p->id}}"> 
@@ -56,6 +56,7 @@
                   </form> 
                             </div>
           </dl>
+    @endif      
       </ul>
       </div>         
       @endif    
