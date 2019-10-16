@@ -50,8 +50,6 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button style="margin-top: 10px;" type="submit" class="btn btn-success btn-block">Login</button>
-
-								<a class="btn btn-link" href="{{ url('/password/email') }}">Esqueceu sua senha?</a>
 							</div>
 						</div>
 					</form>

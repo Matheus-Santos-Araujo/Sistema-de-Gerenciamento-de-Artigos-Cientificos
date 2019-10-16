@@ -21,16 +21,13 @@
       <input id="id" name="id" type="hidden" value="{{$a->id}}">
       <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Selecione o Evento que deseja Participar</label>
   <select class="custom-select my-1 mr-sm-2" name="evento" id="inlineFormCustomSelectPref" style="margin-bottom: 20px;" value="{{$a->evento}}">
-    <option selected>Escolha...</option> 
+    <option>Escolha...</option> 
     @foreach($eventos as $p)
-    <option value = "{{$p->nome}}">{{$p->nome}}</option>
+    <option @if($a->evento === $p->nome) selected @endif value = "{{$p->nome}}">{{$p->nome}}</option>
     @endforeach
   </select>
 
-      <div class="custom-file">
-          <input type="file" class="custom-file-input" name='artigodoc' id="validatedCustomFile" accept="application/pdf" value="{{$a->artigodoc}}">
-          <label class="custom-file-label" for="validatedCustomFile">Escolher arquivo PDF...</label><br>
-        </div><br>
+  <br>
         <button style="margin-top: 20px;" type="submit" class="btn btn-success">Editar Artigo</button>
       </div>
       @endforeach

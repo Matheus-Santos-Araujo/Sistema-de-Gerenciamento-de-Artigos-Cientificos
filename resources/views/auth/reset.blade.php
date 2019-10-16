@@ -1,4 +1,4 @@
-@extends('app')
+@extends('out')
 
 @section('content')
 <div class="container-fluid">
@@ -45,7 +45,7 @@
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
+								<button type="submit" class="btn btn-success btn-block">
 									Reset Password
 								</button>
 							</div>
